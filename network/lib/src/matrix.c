@@ -38,4 +38,6 @@ void display_matrix(matrix_t *m) {
   printf("}\n");
 }
 
-void matrix_insert(matrix_t *m, size_t x, size_t y, double value) {}
+void matrix_insert(matrix_t *m, size_t x, size_t y, double value) {
+  vector_insert(m->items[y], x, value);
+}
