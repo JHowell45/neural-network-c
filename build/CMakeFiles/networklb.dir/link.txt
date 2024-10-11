@@ -1,2 +1,0 @@
-/usr/bin/ar qc libnetworklb.a CMakeFiles/networklb.dir/network/lib/src/vector.c.o
-/usr/bin/ranlib libnetworklb.a
