@@ -7,7 +7,7 @@
 typedef struct {
   size_t rows;
   size_t columns;
-  vector_t *items;
+  vector_t **items;
 } matrix_t;
 
 matrix_t *new_matrix(size_t rows, size_t cols);
