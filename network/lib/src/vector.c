@@ -8,7 +8,12 @@ vector_t *new_vector(size_t capacity) {
   vec->items = calloc(vec->capacity, sizeof(double));
   return vec;
 }
-void free_vector(vector_t *vec) {}
+void free_vector(vector_t *vec) {
+  if (vec->items != NULL) {
+    free(vec->items);
+  }
+  free(vec);
+}
 void display_vector(vector_t *vec) {}
 
 void vector_insert(vector_t *vec, size_t index, double value) {}
