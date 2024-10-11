@@ -1,0 +1,4 @@
+/home/jacob/Code/neural-network-c/build/CMakeFiles/networklb.dir
+/home/jacob/Code/neural-network-c/build/CMakeFiles/network.dir
+/home/jacob/Code/neural-network-c/build/CMakeFiles/edit_cache.dir
+/home/jacob/Code/neural-network-c/build/CMakeFiles/rebuild_cache.dir
