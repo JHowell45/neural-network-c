@@ -1,0 +1,9 @@
+{
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/network/lib/include",
+        "${workspaceFolder}/network/lib/src"
+    ],
+    "files.associations": {
+        "stdlib.h": "c"
+    }
+}
