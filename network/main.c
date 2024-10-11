@@ -12,6 +12,9 @@ void vector_test() {
 void matrix_test() {
   matrix_t *m = new_matrix(2, 2);
   display_matrix(m);
+  matrix_insert(m, 0, 1, 3);
+  display_matrix(m);
+
   free_matrix(m);
   return 0;
 }
