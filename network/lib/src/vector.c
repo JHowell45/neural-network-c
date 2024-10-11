@@ -27,4 +27,6 @@ void display_vector(vector_t *vec) {
   printf("]");
 }
 
-void vector_insert(vector_t *vec, size_t index, double value) {}
+void vector_insert(vector_t *vec, size_t index, double value) {
+  vec->items[index] = value;
+}
