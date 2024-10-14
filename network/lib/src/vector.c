@@ -30,3 +30,5 @@ void display_vector(vector_t *vec) {
 void vector_insert(vector_t *vec, size_t index, double value) {
   vec->items[index] = value;
 }
+
+double vector_get(vector_t *vec, size_t index) { return vec->items[index]; }

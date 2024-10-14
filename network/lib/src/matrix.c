@@ -42,7 +42,16 @@ void matrix_insert(matrix_t *m, size_t x, size_t y, double value) {
   vector_insert(m->items[y], x, value);
 }
 
+double matrix_get(matrix_t *m, size_t x, size_t y) {
+  return vector_get(m->items[y], x);
+}
+
 matrix_t *matrix_transpose(matrix_t *m) {
   matrix_t *transposedM = new_matrix(m->columns, m->rows);
+  for (int column = 0; column < m->columns; column++) {
+    for (int row = 0; row < m->rows; row++) {
+      matrix_insert(transposedM, column, row, matrix_get(m, row, column));
+    }
+  }
   return transposedM;
 }

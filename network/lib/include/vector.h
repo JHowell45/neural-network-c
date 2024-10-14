@@ -14,5 +14,6 @@ void free_vector(vector_t *vec);
 void display_vector(vector_t *vec);
 
 void vector_insert(vector_t *vec, size_t index, double value);
+double vector_get(vector_t *vec, size_t index);
 
 #endif
