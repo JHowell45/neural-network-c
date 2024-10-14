@@ -35,11 +35,19 @@ if (WIN32)
 endif (WIN32)
 add_definitions(-DUNITY_INCLUDE_DOUBLE)
 FetchContent_MakeAvailable(unity)
+include(CTest)
 
 ####################################################################################
-# Add Tests:
+# Add Matrix Tests:
 ####################################################################################
-include(CTest)
+set(MATRIX_INSERT matrix_insert)
+add_executable(${MATRIX_INSERT}_test tests/matrices/${MATRIX_INSERT}.c)
+target_link_libraries(${MATRIX_INSERT}_test ${LIB_NAME} unity)
+add_test(${MATRIX_INSERT}_test ${MATRIX_INSERT}_test)
+
+####################################################################################
+# Add Vector Tests:
+####################################################################################
 set(VECTOR_INSERT vector_insert)
 add_executable(${VECTOR_INSERT}_test tests/vectors/${VECTOR_INSERT}.c)
 target_link_libraries(${VECTOR_INSERT}_test ${LIB_NAME} unity)
