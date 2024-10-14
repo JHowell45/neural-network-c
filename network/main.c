@@ -2,15 +2,25 @@
 #include "vector.h"
 #include <stdio.h>
 
+#define VECTOR_SIZE 10
+
 #define MATRIX_WIDTH 3
 #define MATRIX_HEIGHT 4
 
 void vector_test() {
-  vector_t *vec = new_vector(10);
+  vector_t *vec = new_vector(VECTOR_SIZE);
+  for (int i = 0; i < VECTOR_SIZE; i++) {
+    vector_insert(vec, i, i + 1);
+  }
   display_vector(vec);
   printf("\n");
 
   vector_t *vec2 = vector_multiply_scalar(vec, 5);
+  display_vector(vec2);
+  printf("\n");
+
+  double *value = vector_multiply_vector(vec, vec2);
+  printf("Multiply both vectors above: %f\n", value);
 
   free_vector(vec);
   free_vector(vec2);

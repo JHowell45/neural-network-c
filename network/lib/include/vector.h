@@ -16,6 +16,6 @@ void vector_insert(vector_t *vec, size_t index, double value);
 double vector_get(vector_t *vec, size_t index);
 
 vector_t *vector_multiply_scalar(vector_t *vec, double scalar);
-int vector_multiply_vector(vector_t *vec1, vector_t *vec2);
+double *vector_multiply_vector(vector_t *vec1, vector_t *vec2);
 
 #endif

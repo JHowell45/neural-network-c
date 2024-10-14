@@ -8,12 +8,14 @@ vector_t *new_vector(size_t capacity) {
   vec->items = calloc(vec->capacity, sizeof(double));
   return vec;
 }
+
 void free_vector(vector_t *vec) {
   if (vec->items != NULL) {
     free(vec->items);
   }
   free(vec);
 }
+
 void display_vector(vector_t *vec) {
   printf("[");
   for (register int i = 0; i < vec->capacity; i++) {
@@ -39,6 +41,7 @@ vector_t *vector_multiply_scalar(vector_t *vec, double scalar) {
   }
   return newVec;
 }
+
 double *vector_multiply_vector(vector_t *vec1, vector_t *vec2) {
   if (vec1->capacity != vec2->capacity) {
     return NULL;
