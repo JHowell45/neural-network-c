@@ -41,3 +41,8 @@ void display_matrix(matrix_t *m) {
 void matrix_insert(matrix_t *m, size_t x, size_t y, double value) {
   vector_insert(m->items[y], x, value);
 }
+
+matrix_t *matrix_transpose(matrix_t *m) {
+  matrix_t *transposedM = new_matrix(m->columns, m->rows);
+  return transposedM;
+}

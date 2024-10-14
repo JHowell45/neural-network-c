@@ -15,5 +15,6 @@ void free_matrix(matrix_t *m);
 void display_matrix(matrix_t *m);
 
 void matrix_insert(matrix_t *m, size_t x, size_t y, double value);
+matrix_t *matrix_transpose(matrix_t *m);
 
 #endif
