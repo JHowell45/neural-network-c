@@ -18,8 +18,8 @@ void matrix_insert(matrix_t *m, size_t x, size_t y, double value);
 double matrix_get(matrix_t *m, size_t x, size_t y);
 matrix_t *matrix_transpose(matrix_t *m);
 
-void matrix_multiply_scalar(matrix_t *m, double scalar);
-void matrix_multiply_vector(matrix_t *m, vector_t *v);
-void matrix_multiply_matrix(matrix_t *m1, matrix_t *m2);
+matrix_t *matrix_multiply_scalar(matrix_t *m, double scalar);
+matrix_t *matrix_multiply_vector(matrix_t *m, vector_t *v);
+matrix_t *matrix_multiply_matrix(matrix_t *m1, matrix_t *m2);
 
 #endif

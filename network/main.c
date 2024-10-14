@@ -9,7 +9,11 @@ void vector_test() {
   vector_t *vec = new_vector(10);
   display_vector(vec);
   printf("\n");
+
+  vector_t *vec2 = vector_multiply_scalar(vec, 5);
+
   free_vector(vec);
+  free_vector(vec2);
 }
 
 void matrix_test() {
@@ -34,6 +38,7 @@ void matrix_test() {
 }
 
 int main(void) {
+  vector_test();
   matrix_test();
   return 0;
 }

@@ -55,3 +55,13 @@ matrix_t *matrix_transpose(matrix_t *m) {
   }
   return transposedM;
 }
+
+matrix_t *matrix_multiply_scalar(matrix_t *m, double scalar) {
+  matrix_t *newM = new_matrix(m->rows, m->columns);
+  for (int index = 0; index < m->columns; index++) {
+    newM->items[index] = vector_multiply_scalar(m->items[index], scalar);
+  }
+  return newM;
+}
+matrix_t *matrix_multiply_vector(matrix_t *m, vector_t *v) {}
+matrix_t *matrix_multiply_matrix(matrix_t *m1, matrix_t *m2) {}
