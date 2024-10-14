@@ -10,9 +10,18 @@ weight_t *new_weight(double value, node_t *n) {
 
 void free_weight(weight_t *weight) { free(weight); }
 
-weights_t *new_weights(size_t capacity) {}
+weights_t *new_weights(size_t capacity) {
+  weights_t *w = malloc(sizeof(weights_t));
+  w->capacity = capacity;
+  w->size = 0;
+  w->items = calloc(w->capacity, sizeof(weight_t *));
+  return w;
+}
 
-void free_weights(weights_t *w) {}
+void free_weights(weights_t *w) {
+  free(w->items);
+  free(w);
+}
 
 void weights_add_weight(weights_t *w, weight_t *item) {}
 
