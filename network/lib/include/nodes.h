@@ -31,6 +31,7 @@ weights_t *new_weights(size_t capacity);
 void free_weights(weights_t *w);
 
 void weights_add_weight(weights_t *w, weight_t *item);
+void weights_remove_weight(weights_t *w, size_t index);
 
 node_t *new_node(double value, double bias);
 void free_node(node_t *node);
