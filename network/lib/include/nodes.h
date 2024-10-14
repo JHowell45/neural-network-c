@@ -17,4 +17,12 @@ struct weight {
   node_t *node;
 };
 
+node_t *new_node(double value, double bias);
+void free_node(node_t *node);
+
+void node_add_weight(node_t *node, weight_t *weight);
+
+weight_t *new_weight(double *value, node_t *n);
+void free_weight(weight_t *weight);
+
 #endif
