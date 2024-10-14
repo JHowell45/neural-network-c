@@ -1,4 +1,5 @@
 #include "matrix.h"
+#include "nodes.h"
 #include "vector.h"
 #include <stdio.h>
 
@@ -47,8 +48,14 @@ void matrix_test() {
   free_matrix(tM);
 }
 
+void nodes_test() {
+  input_node_t *in1 = new_input_node(1.00, 0.01);
+  input_node_t *in3 = new_input_node(3.00, 0.46);
+  input_node_t *in2 = new_input_node(2.00, -0.16);
+}
+
 int main(void) {
-  vector_test();
-  matrix_test();
+  //   vector_test();
+  //   matrix_test();
   return 0;
 }
