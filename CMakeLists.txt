@@ -33,6 +33,7 @@ FetchContent_Declare(
 if (WIN32)
     add_definitions(-DUNITY_SUPPORT_64)
 endif (WIN32)
+add_definitions(-DUNITY_INCLUDE_DOUBLE)
 FetchContent_MakeAvailable(unity)
 
 ####################################################################################
@@ -43,3 +44,8 @@ set(VECTOR_INSERT vector_insert)
 add_executable(${VECTOR_INSERT}_test tests/vectors/${VECTOR_INSERT}.c)
 target_link_libraries(${VECTOR_INSERT}_test ${LIB_NAME} unity)
 add_test(${VECTOR_INSERT}_test ${VECTOR_INSERT}_test)
+
+set(VECTOR_ADD vector_add)
+add_executable(${VECTOR_ADD}_test tests/vectors/${VECTOR_ADD}.c)
+target_link_libraries(${VECTOR_ADD}_test ${LIB_NAME} unity)
+add_test(${VECTOR_ADD}_test ${VECTOR_ADD}_test)

@@ -21,6 +21,7 @@ static void test_insert_value_to_vector(void) {
 
 int main(void) {
   UNITY_BEGIN();
+  RUN_TEST(test_initial_value_is_zero_for_created_vector);
   RUN_TEST(test_insert_value_to_vector);
   return UNITY_END();
 }
