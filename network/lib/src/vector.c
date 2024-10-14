@@ -42,13 +42,13 @@ vector_t *vector_multiply_scalar(vector_t *vec, double scalar) {
   return newVec;
 }
 
-double *vector_multiply_vector(vector_t *vec1, vector_t *vec2) {
+double vector_multiply_vector(vector_t *vec1, vector_t *vec2) {
   if (vec1->capacity != vec2->capacity) {
-    return NULL;
+    exit(1);
   }
   double sum = 0.0;
   for (int i = 0; i < vec1->capacity; i++) {
     sum += vec1->items[i] * vec2->items[i];
   }
-  return &sum;
+  return sum;
 }

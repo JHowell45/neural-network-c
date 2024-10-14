@@ -19,7 +19,7 @@ void vector_test() {
   display_vector(vec2);
   printf("\n");
 
-  double *value = vector_multiply_vector(vec, vec2);
+  double value = vector_multiply_vector(vec, vec2);
   printf("Multiply both vectors above: %f\n", value);
 
   free_vector(vec);
