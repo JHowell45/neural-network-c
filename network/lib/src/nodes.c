@@ -23,6 +23,11 @@ void free_weights(weights_t *w) {
   free(w);
 }
 
+static void increase_weight_capacity(weights_t *w) {
+  w->capacity += 5;
+  w->items = realloc(w->items, w->capacity);
+}
+
 void weights_add_weight(weights_t *w, weight_t *item) {}
 
 void weights_remove_weight(weights_t *w, size_t index) {}
