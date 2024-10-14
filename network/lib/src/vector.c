@@ -34,6 +34,17 @@ void vector_insert(vector_t *vec, size_t index, double value) {
 
 double vector_get(vector_t *vec, size_t index) { return vec->items[index]; }
 
+vector_t *vector_add(vector_t *v1, vector_t *v2) {
+  if (v1->capacity != v2->capacity) {
+    return NULL;
+  }
+  vector_t *summedVec = new_vector(v1->capacity);
+  for (int i = 0; i < v1->capacity; i++) {
+    vector_insert(summedVec, i, v1->items[i] + v2->items[i]);
+  }
+  return summedVec;
+}
+
 vector_t *vector_multiply_scalar(vector_t *vec, double scalar) {
   vector_t *newVec = new_vector(vec->capacity);
   for (int index = 0; index < vec->capacity; index++) {
