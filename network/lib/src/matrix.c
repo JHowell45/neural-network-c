@@ -46,6 +46,17 @@ double matrix_get(matrix_t *m, size_t x, size_t y) {
   return vector_get(m->items[y], x);
 }
 
+vector_t *matrix_get_row(matrix_t *m, size_t row) {
+  vector_t *vec = new_vector(m->columns);
+  for (int i = 0; i < m->columns; i++) {
+    vector_insert(vec, i, vector_get(m->items[i], row));
+  }
+  return vec;
+}
+vector_t *matrix_get_column(matrix_t *m, size_t column) {
+  return m->items[column];
+}
+
 matrix_t *matrix_transpose(matrix_t *m) {
   matrix_t *transposedM = new_matrix(m->columns, m->rows);
   for (int column = 0; column < m->columns; column++) {
@@ -64,4 +75,11 @@ matrix_t *matrix_multiply_scalar(matrix_t *m, double scalar) {
   return newM;
 }
 matrix_t *matrix_multiply_vector(matrix_t *m, vector_t *v) {}
-matrix_t *matrix_multiply_matrix(matrix_t *m1, matrix_t *m2) {}
+matrix_t *matrix_multiply_matrix(matrix_t *m1, matrix_t *m2) {
+  if (m1->rows != m2->columns && m1->columns != m2->rows) {
+    printf("Invalid Matrix sizes! M1 (rows: %zu, columns: %zu), M2 (rows: %zu, "
+           "columns: %zu)\n",
+           m1->rows, m1->columns, m2->rows, m2->columns);
+    exit(1);
+  }
+}
