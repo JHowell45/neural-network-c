@@ -36,7 +36,11 @@ void weights_add_weight(weights_t *w, weight_t *item) {
   w->size++;
 }
 
-void weights_remove_weight(weights_t *w, size_t index) {}
+void weights_remove_weight(weights_t *w, size_t index) {
+  w->size--;
+  free_node(w->items[w->size]);
+  w->items[w->size] = NULL;
+}
 
 node_t *new_node(double value, double bias) {}
 
