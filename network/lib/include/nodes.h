@@ -5,10 +5,10 @@
 
 typedef struct {
   double value;
+  double weight;
 } input_node_t;
 
 typedef struct {
-  double weight;
   double bias;
 } layer_node_t;
 

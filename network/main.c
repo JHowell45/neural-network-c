@@ -50,12 +50,25 @@ void matrix_test() {
 
 void nodes_test() {
   input_node_t *in1 = new_input_node(1.00, 0.01);
-  input_node_t *in3 = new_input_node(3.00, 0.46);
-  input_node_t *in2 = new_input_node(2.00, -0.16);
+  input_node_t *in2 = new_input_node(2.00, 0.46);
+  input_node_t *in3 = new_input_node(3.00, -0.16);
+
+  layer_node_t *lnode = new_layer_node(0.00, 0.17);
+
+  vector_t *inputs = new_vector(3);
+  vector_insert(inputs, 0, in1->value * in1->weight);
+  vector_insert(inputs, 1, in2->value * in2->weight);
+  vector_insert(inputs, 2, in3->value * in3->weight);
+
+  display_vector(inputs);
+
+  double res = activation_function(lnode, inputs);
+  printf("Results: %2f\n", res);
 }
 
 int main(void) {
   //   vector_test();
   //   matrix_test();
+  nodes_test();
   return 0;
 }
