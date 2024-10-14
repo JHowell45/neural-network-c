@@ -32,10 +32,12 @@ void vector_insert(vector_t *vec, size_t index, double value) {
 
 double vector_get(vector_t *vec, size_t index) { return vec->items[index]; }
 
-void vector_multiply_scalar(vector_t *vec, double scalar) {
+vector_t *vector_multiply_scalar(vector_t *vec, double scalar) {
+  vector_t *newVec = new_vector(vec->capacity);
   for (int index = 0; index < vec->capacity; index++) {
-    vec->items[index] = vec->items[index] * scalar;
+    newVec->items[index] = vec->items[index] * scalar;
   }
+  return newVec;
 }
 double *vector_multiply_vector(vector_t *vec1, vector_t *vec2) {
   if (vec1->capacity != vec2->capacity) {
