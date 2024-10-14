@@ -28,7 +28,13 @@ static void increase_weight_capacity(weights_t *w) {
   w->items = realloc(w->items, w->capacity);
 }
 
-void weights_add_weight(weights_t *w, weight_t *item) {}
+void weights_add_weight(weights_t *w, weight_t *item) {
+  if (w->size >= w->capacity) {
+    increase_weight_capacity(w);
+  }
+  w->items[w->size] = item;
+  w->size++;
+}
 
 void weights_remove_weight(weights_t *w, size_t index) {}
 

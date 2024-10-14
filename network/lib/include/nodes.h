@@ -15,7 +15,7 @@ struct weight {
 struct weights {
   size_t capacity;
   size_t size;
-  weight_t *items;
+  weight_t **items;
 };
 
 struct node {
