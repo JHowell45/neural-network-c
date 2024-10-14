@@ -24,7 +24,7 @@ struct node {
   weights_t *weights;
 };
 
-weight_t *new_weight(double *value, node_t *n);
+weight_t *new_weight(double value, node_t *n);
 void free_weight(weight_t *weight);
 
 weights_t *new_weights(size_t capacity);
