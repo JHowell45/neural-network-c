@@ -45,6 +45,14 @@ vector_t *vector_add(vector_t *v1, vector_t *v2) {
   return summedVec;
 }
 
+double vector_sum(vector_t *vec) {
+  double sum = 0.0;
+  for (int i = 0; i < vec->capacity; i++) {
+    sum += vec->items[i];
+  }
+  return sum;
+}
+
 vector_t *vector_multiply_scalar(vector_t *vec, double scalar) {
   vector_t *newVec = new_vector(vec->capacity);
   for (int index = 0; index < vec->capacity; index++) {
