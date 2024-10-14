@@ -12,6 +12,20 @@ typedef struct {
   double bias;
 } layer_node_t;
 
+typedef struct node node_t;
+typedef struct weight weight_t;
+
+struct node {
+  double value;
+  double bias;
+  weight_t *weights;
+};
+
+struct weight {
+  double value;
+  node_t *node;
+};
+
 input_node_t *new_input_node(double value, double weight);
 void free_input_node(input_node_t *n);
 
