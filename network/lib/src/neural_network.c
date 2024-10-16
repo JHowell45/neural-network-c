@@ -23,32 +23,41 @@ void free_neural_network(neural_network_t* network)
         free_vector(network->inputs);
     }
 
-    if (network->outputs != NULL)
+    // if (network->outputs != NULL)
+    // {
+    //     free_vector(network->outputs);
+    // }
+
+    if (network->hidden_layers != NULL && network->hidden_layers_count > 0)
     {
-        free_vector(network->outputs);
+        for (int i = 0; i < network->hidden_layers_count; i++)
+        {
+            if (network->hidden_layers[i] != NULL)
+            {
+                free_vector(network->hidden_layers[i]);
+            }
+        }
+        free(network->hidden_layers);
     }
 
-    // if (network->hidden_layers != NULL && network->hidden_layers_count > 0)
-    // {
-    //     for (int i = 0; i < network->hidden_layers_count; i++)
-    //     {
-    //         free_vector(network->hidden_layers[i]);
-    //     }
-    // }
-
-    // if (network->weights != NULL && network->hidden_layers_count > 1)
-    // {
-    //     for (int i = 0; i < network->hidden_layers_count; i++)
-    //     {
-    //         free_vector(network->hidden_layers[i]);
-    //     }
-    // }
+    if (network->weights != NULL && network->hidden_layers_count > 1)
+    {
+        for (int i = 0; i < network->hidden_layers_count + 1; i++)
+        {
+            if (network->weights[i] != NULL)
+            {
+                free_matrix(network->hidden_layers[i]);
+            }
+        }
+        free(network->weights);
+    }
 
     free(network);
 }
 
 vector_t* neural_network_inference(neural_network_t* network, vector_t* inputs)
 {
+
     return network->outputs;
 }
 
