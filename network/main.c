@@ -68,7 +68,7 @@ void neural_network_test()
     display_vector(outputs);
     printf("\n");
 
-    // free_neural_network(network);
+    free_neural_network(network);
     free_vector(inputs);
     free_vector(outputs);
 }

@@ -13,6 +13,7 @@ neural_network_t* new_neural_network(size_t inputs_size, size_t outputs_size,
     n->hidden_layers_count = 10;
     n->hidden_layers = calloc(n->hidden_layers_count, sizeof(vector_t*));
     n->weights = calloc(n->hidden_layers_count + 1, sizeof(matrix_t*));
+    n->weights[0] = random_matrix(inputs_size, outputs_size);
     return n;
 }
 void free_neural_network(neural_network_t* network)
@@ -27,21 +28,21 @@ void free_neural_network(neural_network_t* network)
         free_vector(network->outputs);
     }
 
-    if (network->hidden_layers != NULL && network->hidden_layers_count > 0)
-    {
-        for (int i = 0; i < network->hidden_layers_count; i++)
-        {
-            free_vector(network->hidden_layers[i]);
-        }
-    }
+    // if (network->hidden_layers != NULL && network->hidden_layers_count > 0)
+    // {
+    //     for (int i = 0; i < network->hidden_layers_count; i++)
+    //     {
+    //         free_vector(network->hidden_layers[i]);
+    //     }
+    // }
 
-    if (network->weights != NULL && network->hidden_layers_count > 1)
-    {
-        for (int i = 0; i < network->hidden_layers_count; i++)
-        {
-            free_vector(network->hidden_layers[i]);
-        }
-    }
+    // if (network->weights != NULL && network->hidden_layers_count > 1)
+    // {
+    //     for (int i = 0; i < network->hidden_layers_count; i++)
+    //     {
+    //         free_vector(network->hidden_layers[i]);
+    //     }
+    // }
 
     free(network);
 }
