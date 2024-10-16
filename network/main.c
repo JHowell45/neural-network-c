@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "matrix.h"
+#include "neural_network.h"
 #include "vector.h"
 
 #define VECTOR_SIZE 10
@@ -53,12 +54,29 @@ void matrix_test()
     free_matrix(tM);
 }
 
-void nodes_test() {}
+void neural_network_test()
+{
+    neural_network_t* network = new_neural_network(3, 1, Linear);
+    vector_t* inputs = new_vector(3);
+    for (int i = 0; i < 3; i++)
+    {
+        vector_insert(inputs, i, i + 1);
+    }
+    display_vector(inputs);
+    printf("\n");
+    vector_t* outputs = neural_network_inference(network, inputs);
+    display_vector(outputs);
+    printf("\n");
+
+    free_neural_network(network);
+    free_vector(inputs);
+    free_vector(outputs);
+}
 
 int main(void)
 {
     //   vector_test();
     //   matrix_test();
-    nodes_test();
+    neural_network_test();
     return 0;
 }
