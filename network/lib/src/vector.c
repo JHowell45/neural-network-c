@@ -12,9 +12,7 @@ vector_t* new_vector(size_t capacity)
 
 vector_t* random_vector(size_t capacity)
 {
-    vector_t* vec = malloc(sizeof(vector_t));
-    vec->capacity = capacity;
-    vec->items = malloc(vec->capacity * sizeof(double));
+    vector_t* vec = new_vector(capacity);
     for (int i = 0; i < vec->capacity; i++)
     {
         vec->items[i] = (double)rand() / (double)RAND_MAX;
