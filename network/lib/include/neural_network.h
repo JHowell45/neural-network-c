@@ -11,6 +11,7 @@ typedef enum { Linear, Sigmoid, TanH, ReLU } activation_function_t;
 typedef struct {
   vector_t *inputs;
   vector_t *outputs;
+  size_t hidden_layers_count;
   vector_t **hidden_layers;
   matrix_t **weights;
 } neural_network_t;
