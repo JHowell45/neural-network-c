@@ -13,7 +13,7 @@ typedef struct {
   matrix_t **weights;
 } neural_network_t;
 
-neural_network_t *new_neural_network();
+neural_network_t *new_neural_network(size_t inputs_size, size_t outputs_size);
 void free_neural_network();
 
 #endif
