@@ -4,17 +4,19 @@
 #include "weights.h"
 #include <stdlib.h>
 
-enum AcitvationFunction { Linear, Sigmoid, TanH, ReLU };
+typedef enum { Linear, Sigmoid, TanH, ReLU } activation_function_t;
+
 typedef struct {
   double value;
   double bias;
+  weight_t **weights;
 } neuron_t;
 
 neuron_t *new_neuron(double bias);
 void free_neuron(neuron_t *n);
 
-double neuron_activation_function(neuron_t *neuron, weights_t **weights,
-                                  AcitvationFunction function_type);
+double neuron_activation_function(neuron_t *neuron, weight_t **weights,
+                                  activation_function_t function_type);
 
 typedef struct {
   neuron_t **neurons;

@@ -2,7 +2,11 @@
 #define WEIGHTS_H
 
 typedef struct {
+  void *node_from;
+  void *node_to;
+  double weight;
+} weight_t;
 
-} weights_t;
+weight_t *new_weight();
 
 #endif
