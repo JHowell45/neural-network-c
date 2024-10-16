@@ -2,10 +2,10 @@
 #define HIDDEN_LAYER_H
 
 typedef struct {
-
+  double bias;
 } neuron_t;
 
-neuron_t *new_neuron();
+neuron_t *new_neuron(double bias);
 void free_neuron(neuron_t *n);
 
 typedef struct {
