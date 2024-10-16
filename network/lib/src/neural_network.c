@@ -3,6 +3,8 @@
 neural_network_t* new_neural_network(size_t inputs_size, size_t outputs_size,
                                      activation_function_t activation_type)
 {
+    neural_network_t* n;
+    return n;
 }
 void free_neural_network(neural_network_t* network) {}
 
