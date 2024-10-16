@@ -48,6 +48,7 @@ void free_neural_network(neural_network_t* network)
 
 vector_t* neural_network_inference(neural_network_t* network, vector_t* inputs)
 {
+    return network->outputs;
 }
 
 void neural_network_add_hidden_layer(neural_network_t* network,
