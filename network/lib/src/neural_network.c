@@ -17,7 +17,7 @@ neural_network_t* new_neural_network(size_t inputs_size, size_t outputs_size,
     network->weights =
         calloc(network->hidden_layers_count + 1, sizeof(matrix_t*));
     network->weights[0] = random_matrix(inputs_size, outputs_size);
-    return n;
+    return network;
 }
 void free_neural_network(neural_network_t* network)
 {
