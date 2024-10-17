@@ -57,6 +57,7 @@ void matrix_test()
 void neural_network_test()
 {
     neural_network_t* network = new_neural_network(3, 1, Linear);
+
     vector_t* inputs = new_vector(3);
     for (int i = 0; i < 3; i++)
     {
@@ -64,7 +65,11 @@ void neural_network_test()
     }
     display_vector(inputs);
     printf("\n");
+
     display_matrix(network->weights[0]);
+    matrix_t* weights = neural_network_get_weight(network, 0);
+    display_matrix(weights);
+
     vector_t* outputs = neural_network_inference(network, inputs);
     display_vector(outputs);
     printf("\n");

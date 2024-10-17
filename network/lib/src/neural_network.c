@@ -112,7 +112,7 @@ vector_t* neural_network_get_hidden_layer(neural_network_t* network,
     return network->hidden_layers[index];
 }
 
-vector_t* neural_network_get_weight(neural_network_t* network, size_t index)
+matrix_t* neural_network_get_weight(neural_network_t* network, size_t index)
 {
     if (network->weights_count == 0 || index > network->weights_count - 1)
     {
