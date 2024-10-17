@@ -116,10 +116,6 @@ vector_t* matrix_multiply_vector(matrix_t* m, vector_t* v)
     vector_t* results = new_vector(m->columns);
     for (int i = 0; i < m->columns; i++)
     {
-        display_vector(matrix_get_column(m, i));
-        printf("\n");
-        display_vector(v);
-        printf("\n");
         double result = vector_multiply_vector(matrix_get_column(m, i), v);
         vector_insert(results, i, result);
     }
