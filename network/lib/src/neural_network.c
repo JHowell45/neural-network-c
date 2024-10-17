@@ -25,6 +25,7 @@ neural_network_t* new_neural_network(size_t inputs_size, size_t outputs_size,
     neural_network_add_weight(network, inputs_size, outputs_size);
     return network;
 }
+
 void free_neural_network(neural_network_t* network)
 {
     if (network->outputs != NULL)
@@ -98,4 +99,24 @@ void neural_network_add_hidden_layer(neural_network_t* network,
         random_vector(neuron_count);
     network->hidden_layers_count++;
     neural_network_add_weight(network, input_size, neuron_count);
+}
+
+vector_t* neural_network_get_hidden_layer(neural_network_t* network,
+                                          size_t index)
+{
+    if (network->hidden_layers_count == 0 ||
+        index > network->hidden_layers_count - 1)
+    {
+        return NULL;
+    }
+    return network->hidden_layers[index];
+}
+
+vector_t* neural_network_get_weight(neural_network_t* network, size_t index)
+{
+    if (network->weights_count == 0 || index > network->weights_count - 1)
+    {
+        return NULL;
+    }
+    return network->weights[index];
 }

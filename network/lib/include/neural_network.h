@@ -37,4 +37,8 @@ vector_t* neural_network_inference(neural_network_t* network, vector_t* inputs);
 void neural_network_add_hidden_layer(neural_network_t* network,
                                      size_t neuron_count);
 
+vector_t* neural_network_get_hidden_layer(neural_network_t* network,
+                                          size_t index);
+vector_t* neural_network_get_weight(neural_network_t* network, size_t index);
+
 #endif
