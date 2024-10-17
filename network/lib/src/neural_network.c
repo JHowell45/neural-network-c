@@ -21,6 +21,10 @@ neural_network_t* new_neural_network(size_t inputs_size, size_t outputs_size,
 }
 void free_neural_network(neural_network_t* network)
 {
+    if (network->outputs != NULL)
+    {
+        free_vector(network->outputs);
+    }
     if (network->hidden_layers != NULL && network->hidden_layers_count > 0)
     {
         for (int i = 0; i < network->hidden_layers_count; i++)
