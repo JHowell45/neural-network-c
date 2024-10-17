@@ -13,6 +13,7 @@ vector_t* new_vector(size_t capacity)
 vector_t* random_vector(size_t capacity)
 {
     vector_t* vec = new_vector(capacity);
+    srand(time(NULL));
     for (int i = 0; i < vec->capacity; i++)
     {
         vec->items[i] = (double)rand() / (double)RAND_MAX;

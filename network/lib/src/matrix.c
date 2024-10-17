@@ -21,6 +21,7 @@ matrix_t* random_matrix(size_t rows, size_t cols)
     m->rows = rows;
     m->columns = cols;
     m->items = calloc(m->columns, sizeof(vector_t*));
+    srand(time(NULL));
     for (register int col = 0; col < m->columns; col++)
     {
         m->items[col] = random_vector(m->rows);
