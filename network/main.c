@@ -64,6 +64,7 @@ void neural_network_test()
     }
     display_vector(inputs);
     printf("\n");
+    display_matrix(network->weights[0]);
     vector_t* outputs = neural_network_inference(network, inputs);
     display_vector(outputs);
     printf("\n");
