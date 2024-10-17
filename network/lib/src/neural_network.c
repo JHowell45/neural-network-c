@@ -62,4 +62,10 @@ vector_t* neural_network_inference(neural_network_t* network, vector_t* inputs)
 void neural_network_add_hidden_layer(neural_network_t* network,
                                      size_t neuron_count)
 {
+    if (network->hidden_layers_count >= network->hidden_layers_capacity)
+    {
+        network->hidden_layers_capacity += 5;
+        network->hidden_layers =
+            realloc(network->hidden_layers, network->hidden_layers_capacity);
+    }
 }
