@@ -62,6 +62,9 @@ void free_neural_network(neural_network_t* network)
 void display_neural_network(neural_network_t* network)
 {
     printf("------------------Neural Network------------------\n");
+    printf("Input Size: %zu, Output Size: %zu\n\n", network->inputs_size,
+           vector_length(network->outputs));
+
     printf("--------------------------------------------------\n");
 }
 
