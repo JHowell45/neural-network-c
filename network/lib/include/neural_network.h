@@ -19,7 +19,7 @@ typedef enum
 typedef struct
 {
     size_t inputs_size;
-    size_t outputs_size;
+    vector_t* outputs;
     size_t hidden_layers_capacity;
     size_t hidden_layers_count;
     vector_t** hidden_layers;

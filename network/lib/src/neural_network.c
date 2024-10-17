@@ -9,7 +9,7 @@ neural_network_t* new_neural_network(size_t inputs_size, size_t outputs_size,
 {
     neural_network_t* network = malloc(sizeof(neural_network_t));
     network->inputs_size = inputs_size;
-    network->outputs_size = outputs_size;
+    network->outputs = random_vector(outputs_size);
     network->hidden_layers_count = 0;
     network->hidden_layers_capacity = DEFAULT_WEIGHTS_SIZE;
     network->hidden_layers =
@@ -50,8 +50,9 @@ void free_neural_network(neural_network_t* network)
 
 vector_t* neural_network_inference(neural_network_t* network, vector_t* inputs)
 {
-    vector_t* input_weights =
-        matrix_multiply_vector(network->weights[0], inputs);
+    vector_t* results = matrix_multiply_vector(network->weights[0], inputs);
+    vector_add(results, network->outputs);
+    return results;
 }
 
 void neural_network_add_hidden_layer(neural_network_t* network,
