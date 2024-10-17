@@ -50,7 +50,8 @@ void free_neural_network(neural_network_t* network)
 
 vector_t* neural_network_inference(neural_network_t* network, vector_t* inputs)
 {
-    return matrix_multiply_vector(network->weights[0], inputs);
+    vector_t* input_weights =
+        matrix_multiply_vector(network->weights[0], inputs);
 }
 
 void neural_network_add_hidden_layer(neural_network_t* network,
