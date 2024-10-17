@@ -4,6 +4,8 @@
 #include "vector.h"
 #include <stdlib.h>
 
+#define DEFAULT_WEIGHTS_SIZE 10
+
 typedef struct
 {
     size_t rows;

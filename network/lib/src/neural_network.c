@@ -10,8 +10,8 @@ neural_network_t* new_neural_network(size_t inputs_size, size_t outputs_size,
     neural_network_t* n = malloc(sizeof(neural_network_t));
     n->inputs = new_vector(inputs_size);
     n->outputs = new_vector(outputs_size);
-    n->hidden_layers_count = 10;
-    n->hidden_layers = calloc(n->hidden_layers_count, sizeof(vector_t*));
+    n->hidden_layers_count = 0;
+    n->hidden_layers = calloc(DEFAULT_WEIGHTS_SIZE, sizeof(vector_t*));
     n->weights = calloc(n->hidden_layers_count + 1, sizeof(matrix_t*));
     n->weights[0] = random_matrix(inputs_size, outputs_size);
     return n;
