@@ -18,8 +18,8 @@ typedef enum
 
 typedef struct
 {
-    vector_t* inputs;
-    vector_t* outputs;
+    size_t inputs_size;
+    size_t outputs_size;
     size_t hidden_layers_capacity;
     size_t hidden_layers_count;
     vector_t** hidden_layers;

@@ -8,8 +8,8 @@ neural_network_t* new_neural_network(size_t inputs_size, size_t outputs_size,
                                      activation_function_t activation_type)
 {
     neural_network_t* network = malloc(sizeof(neural_network_t));
-    network->inputs = new_vector(inputs_size);
-    network->outputs = new_vector(outputs_size);
+    network->inputs_size = inputs_size;
+    network->outputs_size = outputs_size;
     network->hidden_layers_count = 0;
     network->hidden_layers_capacity = DEFAULT_WEIGHTS_SIZE;
     network->hidden_layers =
@@ -21,16 +21,6 @@ neural_network_t* new_neural_network(size_t inputs_size, size_t outputs_size,
 }
 void free_neural_network(neural_network_t* network)
 {
-    if (network->inputs != NULL)
-    {
-        free_vector(network->inputs);
-    }
-
-    // if (network->outputs != NULL)
-    // {
-    //     free_vector(network->outputs);
-    // }
-
     if (network->hidden_layers != NULL && network->hidden_layers_count > 0)
     {
         for (int i = 0; i < network->hidden_layers_count; i++)
