@@ -46,7 +46,7 @@ void free_neural_network(neural_network_t* network)
         {
             if (network->weights[i] != NULL)
             {
-                free_matrix(network->hidden_layers[i]);
+                free_matrix(network->weights[i]);
             }
         }
         free(network->weights);
