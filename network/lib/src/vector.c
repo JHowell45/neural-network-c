@@ -77,6 +77,20 @@ double vector_sum(vector_t* vec)
     return sum;
 }
 
+void vector_add_vector(vector_t* vec1, vector_t* vec2)
+{
+    if (vec1->capacity != vec2->capacity)
+    {
+        printf("Incompatible vector sizes! Vec1: %zu, Vec2: %zu\n",
+               vec1->capacity, vec2->capacity);
+        exit(1);
+    }
+    for (int i = 0; i < vec1->capacity; i++)
+    {
+        vec1->items[i] += vec2->items[i];
+    }
+}
+
 vector_t* vector_multiply_scalar(vector_t* vec, double scalar)
 {
     vector_t* newVec = new_vector(vec->capacity);
