@@ -62,6 +62,7 @@ void free_neural_network(neural_network_t* network)
 void display_neural_network(neural_network_t* network)
 {
     printf("------------------Neural Network------------------\n");
+    printf("--------------------------------------------------\n");
 }
 
 vector_t* neural_network_inference(neural_network_t* network, vector_t* inputs)
