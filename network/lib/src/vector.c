@@ -53,6 +53,8 @@ void vector_insert(vector_t* vec, size_t index, double value)
 
 double vector_get(vector_t* vec, size_t index) { return vec->items[index]; }
 
+size_t vector_length(vector_t* vec) { return vec->capacity; }
+
 vector_t* vector_add(vector_t* v1, vector_t* v2)
 {
     if (v1->capacity != v2->capacity)
