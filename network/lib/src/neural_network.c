@@ -59,6 +59,11 @@ void free_neural_network(neural_network_t* network)
     free(network);
 }
 
+void display_neural_network(neural_network_t* network)
+{
+    printf("Neural Network:\n");
+}
+
 vector_t* neural_network_inference(neural_network_t* network, vector_t* inputs)
 {
     vector_t* results = matrix_multiply_vector(network->weights[0], inputs);

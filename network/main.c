@@ -43,6 +43,7 @@ void advanced_neural_network_test()
 {
     neural_network_t* network =
         new_neural_network(INPUT_SIZE, OUTPUT_SIZE, Linear);
+    display_neural_network(network);
 
     vector_t* inputs = new_vector(3);
     for (int i = 0; i < 3; i++)
@@ -51,6 +52,10 @@ void advanced_neural_network_test()
     }
     display_vector(inputs);
     printf("\n");
+
+    neural_network_add_hidden_layer(network, 4);
+
+    display_neural_network(network);
 
     free_neural_network(network);
     free_vector(inputs);
