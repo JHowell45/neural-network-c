@@ -7,13 +7,16 @@
 neural_network_t* new_neural_network(size_t inputs_size, size_t outputs_size,
                                      activation_function_t activation_type)
 {
-    neural_network_t* n = malloc(sizeof(neural_network_t));
-    n->inputs = new_vector(inputs_size);
-    n->outputs = new_vector(outputs_size);
-    n->hidden_layers_count = 0;
-    n->hidden_layers = calloc(DEFAULT_WEIGHTS_SIZE, sizeof(vector_t*));
-    n->weights = calloc(n->hidden_layers_count + 1, sizeof(matrix_t*));
-    n->weights[0] = random_matrix(inputs_size, outputs_size);
+    neural_network_t* network = malloc(sizeof(neural_network_t));
+    network->inputs = new_vector(inputs_size);
+    network->outputs = new_vector(outputs_size);
+    network->hidden_layers_count = 0;
+    network->hidden_layers_capacity = DEFAULT_WEIGHTS_SIZE;
+    network->hidden_layers =
+        calloc(network->hidden_layers_capacity, sizeof(vector_t*));
+    network->weights =
+        calloc(network->hidden_layers_count + 1, sizeof(matrix_t*));
+    network->weights[0] = random_matrix(inputs_size, outputs_size);
     return n;
 }
 void free_neural_network(neural_network_t* network)

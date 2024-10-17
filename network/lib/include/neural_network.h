@@ -20,6 +20,7 @@ typedef struct
 {
     vector_t* inputs;
     vector_t* outputs;
+    size_t hidden_layers_capacity;
     size_t hidden_layers_count;
     vector_t** hidden_layers;
     matrix_t** weights;
