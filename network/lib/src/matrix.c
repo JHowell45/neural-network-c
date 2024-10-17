@@ -1,4 +1,5 @@
 #include "matrix.h"
+#include "vector.h"
 #include <stdio.h>
 
 matrix_t* new_matrix(size_t rows, size_t cols)
@@ -109,7 +110,18 @@ matrix_t* matrix_multiply_scalar(matrix_t* m, double scalar)
     }
     return newM;
 }
-matrix_t* matrix_multiply_vector(matrix_t* m, vector_t* v) {}
+
+vector_t* matrix_multiply_vector(matrix_t* m, vector_t* v)
+{
+    vector_t* results = new_vector(m->columns);
+    for (int i = 0; i < m->columns; i++)
+    {
+        vector_insert(results, i,
+                      vector_multiply_vector(matrix_get_column(m, i), v));
+    }
+    return results;
+}
+
 matrix_t* matrix_multiply_matrix(matrix_t* m1, matrix_t* m2)
 {
     if (m1->rows != m2->columns && m1->columns != m2->rows)

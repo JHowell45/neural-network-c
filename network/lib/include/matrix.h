@@ -1,8 +1,8 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
+#include "vector.h"
 #include <stdlib.h>
-#include <vector.h>
 
 typedef struct
 {
@@ -23,7 +23,7 @@ vector_t* matrix_get_column(matrix_t* m, size_t column);
 matrix_t* matrix_transpose(matrix_t* m);
 
 matrix_t* matrix_multiply_scalar(matrix_t* m, double scalar);
-matrix_t* matrix_multiply_vector(matrix_t* m, vector_t* v);
+vector_t* matrix_multiply_vector(matrix_t* m, vector_t* v);
 matrix_t* matrix_multiply_matrix(matrix_t* m1, matrix_t* m2);
 
 #endif
