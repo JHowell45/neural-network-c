@@ -6,7 +6,7 @@
 
 #include <stdlib.h>
 
-#define DEFAULT_WEIGHTS_SIZE 10
+#define DEFAULT_SIZE 10
 
 typedef enum
 {
@@ -23,6 +23,8 @@ typedef struct
     size_t hidden_layers_capacity;
     size_t hidden_layers_count;
     vector_t** hidden_layers;
+    size_t weights_capacity;
+    size_t weights_count;
     matrix_t** weights;
 } neural_network_t;
 

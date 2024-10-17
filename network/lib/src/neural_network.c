@@ -4,19 +4,25 @@
 
 #include <stdlib.h>
 
+static void neural_network_add_weight(neural_network_t* network,
+                                      size_t input_size, size_t output_size);
+
 neural_network_t* new_neural_network(size_t inputs_size, size_t outputs_size,
                                      activation_function_t activation_type)
 {
     neural_network_t* network = malloc(sizeof(neural_network_t));
     network->inputs_size = inputs_size;
     network->outputs = random_vector(outputs_size);
+
     network->hidden_layers_count = 0;
-    network->hidden_layers_capacity = DEFAULT_WEIGHTS_SIZE;
+    network->hidden_layers_capacity = DEFAULT_SIZE;
     network->hidden_layers =
         calloc(network->hidden_layers_capacity, sizeof(vector_t*));
-    network->weights =
-        calloc(network->hidden_layers_count + 1, sizeof(matrix_t*));
-    network->weights[0] = random_matrix(inputs_size, outputs_size);
+
+    network->weights_count = 0;
+    network->weights_capacity = DEFAULT_SIZE;
+    network->weights = calloc(network->weights_capacity, sizeof(matrix_t*));
+    neural_network_add_weight(network, inputs_size, outputs_size);
     return network;
 }
 void free_neural_network(neural_network_t* network)
@@ -59,6 +65,20 @@ vector_t* neural_network_inference(neural_network_t* network, vector_t* inputs)
     return results;
 }
 
+static void neural_network_add_weight(neural_network_t* network,
+                                      size_t input_size, size_t output_size)
+{
+    if (network->weights_count >= network->weights_capacity)
+    {
+        network->weights_capacity += 5;
+        network->hidden_layers =
+            realloc(network->weights, network->weights_capacity);
+    }
+    network->weights[network->weights_count] =
+        random_matrix(input_size, output_size);
+    network->weights_count++;
+}
+
 void neural_network_add_hidden_layer(neural_network_t* network,
                                      size_t neuron_count)
 {
@@ -68,4 +88,7 @@ void neural_network_add_hidden_layer(neural_network_t* network,
         network->hidden_layers =
             realloc(network->hidden_layers, network->hidden_layers_capacity);
     }
+    network->hidden_layers[network->hidden_layers_count] =
+        random_vector(neuron_count);
+    network->hidden_layers_count++;
 }
