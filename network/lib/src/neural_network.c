@@ -82,6 +82,12 @@ static void neural_network_add_weight(neural_network_t* network,
 void neural_network_add_hidden_layer(neural_network_t* network,
                                      size_t neuron_count)
 {
+    size_t input_size = network->inputs_size;
+    if (network->hidden_layers_count > 0)
+    {
+        input_size = vector_length(
+            network->hidden_layers[network->hidden_layers_count - 1]);
+    }
     if (network->hidden_layers_count >= network->hidden_layers_capacity)
     {
         network->hidden_layers_capacity += 5;
@@ -91,4 +97,5 @@ void neural_network_add_hidden_layer(neural_network_t* network,
     network->hidden_layers[network->hidden_layers_count] =
         random_vector(neuron_count);
     network->hidden_layers_count++;
+    neural_network_add_weight(network, input_size, neuron_count);
 }
