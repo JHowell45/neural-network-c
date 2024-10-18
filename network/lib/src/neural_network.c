@@ -64,7 +64,29 @@ void display_neural_network(neural_network_t* network)
     printf("------------------Neural Network------------------\n");
     printf("Input Size: %zu, Output Size: %zu\n\n", network->inputs_size,
            vector_length(network->outputs));
+    size_t weights_index = 0;
+    size_t layers_index = 0;
+    while (weights_index < network->weights_count ||
+           layers_index < network->hidden_layers_count)
+    {
+        printf("\t----------Section %zu----------\n", weights_index);
+        if (network->weights[weights_index] != NULL)
+        {
+            display_matrix(network->weights[weights_index]);
+        }
 
+        if (network->hidden_layers[layers_index] != NULL)
+        {
+            display_vector(network->hidden_layers[layers_index]);
+            printf("\n");
+        }
+
+        weights_index++;
+        layers_index++;
+    }
+    printf("\t----------Outputs----------\n");
+    display_vector(network->outputs);
+    printf("\n");
     printf("--------------------------------------------------\n");
 }
 
