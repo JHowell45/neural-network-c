@@ -114,6 +114,8 @@ matrix_t* matrix_multiply_scalar(matrix_t* m, double scalar)
 
 vector_t* matrix_multiply_vector(matrix_t* m, vector_t* v)
 {
+    printf("M || Columns: %zu, Rows: %zu\n", m->columns, m->rows);
+    printf("V || Length: %zu\n", v->capacity);
     vector_t* results = new_vector(m->columns);
     for (int i = 0; i < m->columns; i++)
     {

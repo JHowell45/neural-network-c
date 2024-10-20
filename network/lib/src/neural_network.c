@@ -137,6 +137,23 @@ vector_t* neural_network_inference(neural_network_t* network, vector_t* inputs)
     vector_t* results = matrix_multiply_vector(network->weights[0], inputs);
     apply_activation_function(results, network->activation_function);
 
+    for (int i = 0; i < network->hidden_layers_count; i++)
+    {
+        printf("Intermediate Results:\n");
+        display_vector(results);
+        printf("\n");
+        vector_add(results, network->hidden_layers[i]);
+        printf("Weighted Intermediate Results:\n");
+        display_vector(results);
+        printf("\n");
+
+        results = matrix_multiply_vector(network->weights[i + 1], results);
+        printf("Next Intermediate Results:\n");
+        display_vector(results);
+        printf("\n");
+        apply_activation_function(results, network->activation_function);
+    }
+
     vector_add_vector(results, network->outputs);
     return results;
 }
