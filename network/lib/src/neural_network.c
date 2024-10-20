@@ -109,24 +109,29 @@ static double rectified_linear_unit(double x)
 vector_t* neural_network_inference(neural_network_t* network, vector_t* inputs)
 {
     vector_t* results = matrix_multiply_vector(network->weights[0], inputs);
-    for (int i = 0; i < results->capacity; i++)
+    if (network->activation_function != Linear)
     {
-        switch (network->activation_function)
+        for (int i = 0; i < results->capacity; i++)
         {
-            case Linear:
-                break;
-            case Sigmoid:
-                vector_insert(results, i, sigmoid(vector_get(results, i)));
-                break;
-            case TanH:
-                vector_insert(results, i, tanh(vector_get(results, i)));
-                break;
-            case ReLU:
-                vector_insert(results, i,
-                              rectified_linear_unit(vector_get(results, i)));
-                break;
+            switch (network->activation_function)
+            {
+                case Sigmoid:
+                    vector_insert(results, i, sigmoid(vector_get(results, i)));
+                    break;
+                case TanH:
+                    vector_insert(results, i, tanh(vector_get(results, i)));
+                    break;
+                case ReLU:
+                    vector_insert(
+                        results, i,
+                        rectified_linear_unit(vector_get(results, i)));
+                    break;
+                default:
+                    break;
+            }
         }
     }
+
     vector_add_vector(results, network->outputs);
     return results;
 }
