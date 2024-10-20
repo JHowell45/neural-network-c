@@ -43,4 +43,6 @@ vector_t* neural_network_get_hidden_layer(neural_network_t* network,
                                           size_t index);
 matrix_t* neural_network_get_weight(neural_network_t* network, size_t index);
 
+vector_t* softmax(vector_t* vec);
+
 #endif

@@ -192,3 +192,18 @@ matrix_t* neural_network_get_weight(neural_network_t* network, size_t index)
     }
     return network->weights[index];
 }
+
+vector_t* softmax(vector_t* vec)
+{
+    vector_t* results = new_vector(vec->capacity);
+    double total = 0.0;
+    for (int i = 0; i < vec->capacity; i++)
+    {
+        total += exp(vector_get(vec, i));
+    }
+    for (int i = 0; i < vec->capacity; i++)
+    {
+        vector_insert(results, i, exp(vector_get(vec, i) / total));
+    }
+    return results;
+}

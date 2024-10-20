@@ -68,7 +68,7 @@ void advanced_neural_network_test()
 void custom_neural_network_test()
 {
     neural_network_t* network =
-        new_neural_network(CUSTOM_INPUT_SIZE, CUSTOM_OUTPUT_SIZE, Linear);
+        new_neural_network(CUSTOM_INPUT_SIZE, CUSTOM_OUTPUT_SIZE, Sigmoid);
     display_neural_network(network);
 
     for (int i = 0; i < CUSTOM_MAX_HIDDEN_LAYERS; i++)
@@ -89,8 +89,22 @@ void custom_neural_network_test()
     display_vector(outputs);
     printf("\n");
 
+    vector_t* softmax_outputs = softmax(outputs);
+    printf("SoftMax Outputs:\n");
+    display_vector(softmax_outputs);
+    printf("\n");
+
     free_neural_network(network);
     free_vector(inputs);
+}
+
+void test_softmax()
+{
+    double denominator = 0.0;
+    denominator += exp(-1);
+    denominator += exp(0);
+    denominator += exp(3);
+    denominator += exp(5);
 }
 
 int main(void)
