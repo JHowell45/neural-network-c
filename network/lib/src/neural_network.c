@@ -1,8 +1,9 @@
 #include "neural_network.h"
 #include "matrix.h"
 #include "vector.h"
-#include <math.h>
 
+#include <math.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 static void neural_network_add_weight(neural_network_t* network,
