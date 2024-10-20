@@ -78,10 +78,12 @@ void custom_neural_network_test()
     display_neural_network(network);
 
     vector_t* inputs = random_vector(CUSTOM_INPUT_SIZE);
+    printf("Inputs:\n");
     display_vector(inputs);
     printf("\n");
 
     vector_t* outputs = neural_network_inference(network, inputs);
+    printf("Outputs:\n");
     display_vector(outputs);
     printf("\n");
 
