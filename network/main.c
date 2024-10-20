@@ -74,6 +74,7 @@ void custom_neural_network_test()
     for (int i = 0; i < CUSTOM_MAX_HIDDEN_LAYERS; i++)
     {
         neural_network_add_hidden_layer(network, 20);
+        display_neural_network(network);
     }
 
     display_neural_network(network);
