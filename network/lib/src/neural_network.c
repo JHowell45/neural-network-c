@@ -77,8 +77,9 @@ void display_neural_network(neural_network_t* network)
 
         if (network->hidden_layers[layers_index] != NULL)
         {
+            printf("Hidden Weights {\n\t");
             display_vector(network->hidden_layers[layers_index]);
-            printf("\n");
+            printf("\n}\n");
         }
 
         weights_index++;
