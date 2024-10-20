@@ -9,6 +9,9 @@
 #define INPUT_SIZE 3
 #define OUTPUT_SIZE 1
 
+#define CUSTOM_INPUT_SIZE 10
+#define CUSTOM_OUTPUT_SIZE 5
+
 void neural_network_test()
 {
     neural_network_t* network =
@@ -45,7 +48,7 @@ void advanced_neural_network_test()
         new_neural_network(INPUT_SIZE, OUTPUT_SIZE, Linear);
     display_neural_network(network);
 
-    vector_t* inputs = new_vector(3);
+    vector_t* inputs = new_vector(INPUT_SIZE);
     for (int i = 0; i < 3; i++)
     {
         vector_insert(inputs, i, i + 1);
@@ -61,9 +64,35 @@ void advanced_neural_network_test()
     free_vector(inputs);
 }
 
+void custom_neural_network_test()
+{
+    neural_network_t* network =
+        new_neural_network(CUSTOM_INPUT_SIZE, CUSTOM_OUTPUT_SIZE, Linear);
+    display_neural_network(network);
+
+    for (int i = 0; i < 3; i++)
+    {
+        neural_network_add_hidden_layer(network, 20);
+    }
+
+    display_neural_network(network);
+
+    vector_t* inputs = random_vector(CUSTOM_INPUT_SIZE);
+    display_vector(inputs);
+    printf("\n");
+
+    vector_t* outputs = neural_network_inference(network, inputs);
+    display_vector(outputs);
+    printf("\n");
+
+    free_neural_network(network);
+    free_vector(inputs);
+}
+
 int main(void)
 {
     // neural_network_test();
-    advanced_neural_network_test();
+    // advanced_neural_network_test();
+    custom_neural_network_test();
     return 0;
 }
