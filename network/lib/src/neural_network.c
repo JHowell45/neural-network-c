@@ -142,7 +142,8 @@ static void neural_network_add_weight(neural_network_t* network,
     if (network->weights_count >= network->weights_capacity)
     {
         network->weights_capacity += 5;
-        network->weights = realloc(network->weights, network->weights_capacity);
+        network->weights = realloc(network->weights, network->weights_capacity *
+                                                         sizeof(matrix_t*));
     }
     network->weights[network->weights_count] =
         random_matrix(input_size, output_size);
@@ -163,7 +164,8 @@ void neural_network_add_hidden_layer(neural_network_t* network,
     {
         network->hidden_layers_capacity += 5;
         network->hidden_layers =
-            realloc(network->hidden_layers, network->hidden_layers_capacity);
+            realloc(network->hidden_layers,
+                    network->hidden_layers_capacity * sizeof(vector_t*));
     }
     network->hidden_layers[network->hidden_layers_count] =
         random_vector(neuron_count);

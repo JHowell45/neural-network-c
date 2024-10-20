@@ -96,7 +96,7 @@ void custom_neural_network_test()
 int main(void)
 {
     // neural_network_test();
-    advanced_neural_network_test();
-    // custom_neural_network_test();
+    // advanced_neural_network_test();
+    custom_neural_network_test();
     return 0;
 }
