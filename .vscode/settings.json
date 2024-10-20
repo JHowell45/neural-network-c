@@ -16,6 +16,7 @@
         "utility": "c",
         "neural_network.h": "c",
         "matrix.h": "c",
-        "activation_functions.h": "c"
+        "activation_functions.h": "c",
+        "vector": "c"
     }
 }
