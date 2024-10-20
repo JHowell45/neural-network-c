@@ -94,10 +94,6 @@ void display_neural_network(neural_network_t* network)
 vector_t* neural_network_inference(neural_network_t* network, vector_t* inputs)
 {
     vector_t* results = matrix_multiply_vector(network->weights[0], inputs);
-    display_vector(results);
-    printf("\n");
-    display_vector(network->outputs);
-    printf("\n");
     vector_add_vector(results, network->outputs);
     return results;
 }
