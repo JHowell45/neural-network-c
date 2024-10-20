@@ -18,7 +18,7 @@ target_include_directories(${LIB_NAME} PUBLIC ${LIB_DIR}/include)
 ################## Create Executable ##################
 set(EXE_NAME network)
 add_executable(${EXE_NAME} ${ROOT_DIR}/main.c)
-target_link_libraries(${EXE_NAME} ${LIB_NAME})
+target_link_libraries(${EXE_NAME} ${LIB_NAME} m)
 #######################################################
 
 ####################################################################################
