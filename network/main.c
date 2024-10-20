@@ -101,10 +101,25 @@ void custom_neural_network_test()
 void test_softmax()
 {
     double denominator = 0.0;
-    denominator += exp(-1);
-    denominator += exp(0);
-    denominator += exp(3);
-    denominator += exp(5);
+    vector_t* digits = new_vector(4);
+    vector_insert(digits, 0, -1);
+    vector_insert(digits, 1, 0);
+    vector_insert(digits, 2, 3);
+    vector_insert(digits, 3, 5);
+
+    for (int i = 0; i < digits->capacity; i++)
+    {
+        denominator += exp(vector_get(digits, i));
+    }
+    printf("Denominator: %.2lf\n", denominator);
+
+    for (int i = 0; i < digits->capacity; i++)
+    {
+        double digit = vector_get(digits, i);
+        printf("Digit: %lf, Softmax: %.3lf\n", digit, exp(digit) / denominator);
+    }
+
+    display_vector(softmax(digits));
 }
 
 int main(void)
@@ -112,5 +127,6 @@ int main(void)
     // neural_network_test();
     // advanced_neural_network_test();
     custom_neural_network_test();
+    // test_softmax();
     return 0;
 }

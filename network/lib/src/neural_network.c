@@ -203,7 +203,7 @@ vector_t* softmax(vector_t* vec)
     }
     for (int i = 0; i < vec->capacity; i++)
     {
-        vector_insert(results, i, exp(vector_get(vec, i) / total));
+        vector_insert(results, i, exp(vector_get(vec, i)) / total);
     }
     return results;
 }
