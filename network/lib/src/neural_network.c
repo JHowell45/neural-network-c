@@ -1,6 +1,7 @@
 #include "neural_network.h"
 #include "matrix.h"
 #include "vector.h"
+#include <math.h>
 
 #include <stdlib.h>
 
@@ -11,6 +12,8 @@ neural_network_t* new_neural_network(size_t inputs_size, size_t outputs_size,
                                      activation_function_t activation_type)
 {
     neural_network_t* network = malloc(sizeof(neural_network_t));
+    network->activation_function = activation_type;
+
     network->inputs_size = inputs_size;
     network->outputs = random_vector(outputs_size);
 
@@ -91,9 +94,38 @@ void display_neural_network(neural_network_t* network)
     printf("--------------------------------------------------\n");
 }
 
+static double sigmoid(double x) { return 1 / 1 + exp(x * -1); }
+
+static double rectified_linear_unit(double x)
+{
+    if (x <= 0)
+    {
+        return 0;
+    }
+    return x;
+}
+
 vector_t* neural_network_inference(neural_network_t* network, vector_t* inputs)
 {
     vector_t* results = matrix_multiply_vector(network->weights[0], inputs);
+    for (int i = 0; i < results->capacity; i++)
+    {
+        switch (network->activation_function)
+        {
+            case Linear:
+                break;
+            case Sigmoid:
+                vector_insert(results, i, sigmoid(vector_get(results, i)));
+                break;
+            case TanH:
+                vector_insert(results, i, tanh(vector_get(results, i)));
+                break;
+            case ReLU:
+                vector_insert(results, i,
+                              rectified_linear_unit(vector_get(results, i)));
+                break;
+        }
+    }
     vector_add_vector(results, network->outputs);
     return results;
 }

@@ -26,6 +26,7 @@ typedef struct
     size_t weights_capacity;
     size_t weights_count;
     matrix_t** weights;
+    activation_function_t activation_function;
 } neural_network_t;
 
 neural_network_t* new_neural_network(size_t inputs_size, size_t outputs_size,
