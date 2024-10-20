@@ -10,6 +10,7 @@
 #define OUTPUT_SIZE 1
 
 #define CUSTOM_INPUT_SIZE 10
+#define CUSTOM_MAX_HIDDEN_LAYERS 10
 #define CUSTOM_OUTPUT_SIZE 5
 
 void neural_network_test()
@@ -70,7 +71,7 @@ void custom_neural_network_test()
         new_neural_network(CUSTOM_INPUT_SIZE, CUSTOM_OUTPUT_SIZE, Linear);
     display_neural_network(network);
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < CUSTOM_MAX_HIDDEN_LAYERS; i++)
     {
         neural_network_add_hidden_layer(network, 20);
     }
